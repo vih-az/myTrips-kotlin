@@ -3,12 +3,11 @@ package br.senai.sp.jandira.mytrips
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,8 +19,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.AddAPhoto
-import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.PermIdentity
@@ -42,7 +41,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -178,7 +176,7 @@ fun Greeting() {
                         fontWeight = FontWeight.Black
                     )
                     Icon(
-                        imageVector = Icons.Default.ArrowForward,
+                        imageVector = Icons.AutoMirrored.Filled.ArrowForward,
                         contentDescription = "Sign in"
                     )
                 }
@@ -367,12 +365,22 @@ fun CadastroTela(){
                    )
                 }
             }
-            Row {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(end = 2.dp),
+                horizontalArrangement = Arrangement.End
+            ){
                 Text(
-                    text = "Already have an account?"
+                    text = "Already have an account?",
+                    color = Color(0xFFA09C9C)
                 )
+                Spacer(modifier = Modifier
+                    .width(2.dp))
                 Text(
-                    text = "Sign in"
+                    text = "Sign in",
+                    color = Color(0xFFCF06F0),
+                    fontWeight = FontWeight.Black
                 )
             }
             Row(
@@ -397,5 +405,41 @@ fun CadastroTela(){
 fun CadastroTelaPreview(){
     MyTripsTheme {
         CadastroTela()
+    }
+}
+
+@Composable
+fun Trips(){
+    Surface(
+        modifier = Modifier
+            .fillMaxSize()
+    ){
+        Column {
+            Card {
+                Column {
+                    Column {
+                        Card {
+
+                        }
+                        Text(text = )
+                    }
+                    Column {
+                        Row {
+                            Icon(imageVector = , contentDescription = )
+                            Text(text = )
+                        }
+                        Text(text = )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun TripsPreview(){
+    MyTripsTheme{
+        Trips()
     }
 }
