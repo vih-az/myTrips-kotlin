@@ -303,7 +303,8 @@ fun CadastroTela(){
                     },
                     modifier = Modifier
                         .width(340.dp),
-                    shape = RoundedCornerShape(14.dp)
+                    shape = RoundedCornerShape(14.dp),
+                    colors = OutlinedTextFieldDefaults.colors(unfocusedBorderColor = Color(0xFFCF06F0))
                 )
                 OutlinedTextField(
                     value = "",
@@ -313,7 +314,8 @@ fun CadastroTela(){
                     },
                     modifier = Modifier
                         .width(340.dp),
-                    shape = RoundedCornerShape(14.dp)
+                    shape = RoundedCornerShape(14.dp),
+                    colors = OutlinedTextFieldDefaults.colors(unfocusedBorderColor = Color(0xFFCF06F0))
                 )
                 OutlinedTextField(
                     value = "",
@@ -323,7 +325,8 @@ fun CadastroTela(){
                     },
                     modifier = Modifier
                         .width(340.dp),
-                    shape = RoundedCornerShape(14.dp)
+                    shape = RoundedCornerShape(14.dp),
+                    colors = OutlinedTextFieldDefaults.colors(unfocusedBorderColor = Color(0xFFCF06F0))
                 )
                 OutlinedTextField(
                     value = "",
@@ -333,7 +336,8 @@ fun CadastroTela(){
                     },
                     modifier = Modifier
                         .width(340.dp),
-                    shape = RoundedCornerShape(14.dp)
+                    shape = RoundedCornerShape(14.dp),
+                    colors = OutlinedTextFieldDefaults.colors(unfocusedBorderColor = Color(0xFFCF06F0))
                 )
             }
             Column {
