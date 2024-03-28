@@ -37,6 +37,8 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -66,6 +68,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting() {
+    var emailState = remember {
+        mutableStateOf("")
+    }
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -414,25 +419,25 @@ fun Trips(){
         modifier = Modifier
             .fillMaxSize()
     ){
-        Column {
-            Card {
-                Column {
-                    Column {
-                        Card {
-
-                        }
-                        Text(text = )
-                    }
-                    Column {
-                        Row {
-                            Icon(imageVector = , contentDescription = )
-                            Text(text = )
-                        }
-                        Text(text = )
-                    }
-                }
-            }
-        }
+//        Column {
+//            Card {
+//                Column {
+//                    Column {
+//                        Card {
+//
+//                        }
+//                        Text(text = )
+//                    }
+//                    Column {
+//                        Row {
+//                            Icon(imageVector = , contentDescription = )
+//                            Text(text = )
+//                        }
+//                        Text(text = )
+//                    }
+//                }
+//            }
+//        }
     }
 }
 
