@@ -47,6 +47,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import br.senai.sp.jandira.mytrips.screens.TelaLogin
 import br.senai.sp.jandira.mytrips.ui.theme.MyTripsTheme
 
 class MainActivity : ComponentActivity() {
@@ -59,7 +63,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting()
+                    val controleNavegacao = rememberNavController()
+                    NavHost(
+                        navController = controleNavegacao,
+                        startDestination = "login"
+                    ){
+                        composable(
+                            route = "login"
+                        ){
+                            TelaLogin(controleNavegacao)
+                        }
+                    }
                 }
             }
         }
