@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.mytrips.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,6 +30,8 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,9 +39,22 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
 @Composable
-fun CadastroTela(){
+fun CadastroTela(controleNavegacao: NavHostController){
+    var nameState = remember {
+        mutableStateOf("")
+    }
+    var telefoneState = remember{
+        mutableStateOf("")
+    }
+    var emailState = remember{
+        mutableStateOf("")
+    }
+    var senhaState = remember{
+        mutableStateOf("")
+    }
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -116,8 +132,10 @@ fun CadastroTela(){
                 horizontalAlignment = Alignment.CenterHorizontally
             ){
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = {},
+                    value = nameState.value,
+                    onValueChange = {
+                        nameState.value = it
+                    },
                     label = {
                         Text(text = "Username")
                     },
@@ -127,8 +145,8 @@ fun CadastroTela(){
                     colors = OutlinedTextFieldDefaults.colors(unfocusedBorderColor = Color(0xFFCF06F0))
                 )
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = {},
+                    value = telefoneState.value,
+                    onValueChange = {telefoneState.value = it},
                     label = {
                         Text(text = "Phone")
                     },
@@ -138,8 +156,8 @@ fun CadastroTela(){
                     colors = OutlinedTextFieldDefaults.colors(unfocusedBorderColor = Color(0xFFCF06F0))
                 )
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = {},
+                    value = emailState.value,
+                    onValueChange = {emailState.value = it},
                     label = {
                         Text(text = "E-mail")
                     },
@@ -149,8 +167,8 @@ fun CadastroTela(){
                     colors = OutlinedTextFieldDefaults.colors(unfocusedBorderColor = Color(0xFFCF06F0))
                 )
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = {},
+                    value = senhaState.value,
+                    onValueChange = {senhaState.value = it},
                     label = {
                         Text(text = "Password")
                     },
@@ -174,7 +192,7 @@ fun CadastroTela(){
                     )
                 }
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = {controleNavegacao.navigate("home")},
                     modifier = Modifier
                         .width(340.dp)
                         .height(48.dp),
@@ -202,7 +220,8 @@ fun CadastroTela(){
                 Text(
                     text = "Sign in",
                     color = Color(0xFFCF06F0),
-                    fontWeight = FontWeight.Black
+                    fontWeight = FontWeight.Black,
+                    modifier=Modifier.clickable {controleNavegacao.navigate("login")}
                 )
             }
             Row(

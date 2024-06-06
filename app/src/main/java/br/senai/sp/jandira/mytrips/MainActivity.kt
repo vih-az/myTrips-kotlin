@@ -50,7 +50,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import br.senai.sp.jandira.mytrips.screens.CadastroTela
 import br.senai.sp.jandira.mytrips.screens.TelaLogin
+import br.senai.sp.jandira.mytrips.screens.Trips
 import br.senai.sp.jandira.mytrips.ui.theme.MyTripsTheme
 
 class MainActivity : ComponentActivity() {
@@ -72,6 +74,16 @@ class MainActivity : ComponentActivity() {
                             route = "login"
                         ){
                             TelaLogin(controleNavegacao)
+                        }
+                        composable(
+                            route = "cadastroTela"
+                        ){
+                            CadastroTela(controleNavegacao)
+                        }
+                        composable(
+                            route = "home"
+                        ){
+                            Trips()
                         }
                     }
                 }

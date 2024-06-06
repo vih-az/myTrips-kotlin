@@ -141,7 +141,9 @@ fun TelaLogin(controleNavegacao : NavHostController){
             ){
                 Button(
                     onClick = {
-                              controleNavegacao.navigate("home")
+                        if (emailState.value == "@123" && senhaState.value == "123") {
+                            controleNavegacao.navigate("home")
+                        }
                     },
                     modifier = Modifier
                         .width(140.dp)

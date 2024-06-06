@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,9 +34,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.senai.sp.jandira.mytrips.R
+import br.senai.sp.jandira.mytrips.repositorio.ViagemRepositorio
+import br.senai.sp.jandira.mytrips.utilitarios.encurtadorDeDatas
 
 @Composable
 fun Trips() {
+    val cards = ViagemRepositorio().listarTodasAsViagens()
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -67,14 +71,19 @@ fun Trips() {
                     ){
                         Row(
                             modifier = Modifier
-                                .fillMaxWidth()
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.End
                         ){
-                            Column {
-                                Icon(
+                            Column(
+                                horizontalAlignment = Alignment.End,
+                                modifier = Modifier.padding(19.dp)
+                            ) {
+                                Image(
                                     painter = painterResource(
                                         id = R.drawable.susanna
                                     ),
-                                    contentDescription = "susanna"
+                                    contentDescription = "susanna",
+                                    modifier = Modifier.height(59.dp).width(59.dp)
                                 )
                                 Text(
                                     text = "susanna hoffs",
@@ -155,26 +164,37 @@ fun Trips() {
             Text(
                 text = "Past Trips"
             )
+            OutlinedTextField(value = "Search your destiny", onValueChange = {})
             Column {
                 LazyColumn{
-                    items(3){
+                    items(cards){
                         Box{
                             Card(
                                 colors = CardDefaults.cardColors(containerColor = Color.White),
-                                elevation = CardDefaults.cardElevation(8.dp)
+                                elevation = CardDefaults.cardElevation(8.dp),
+                                modifier = Modifier
+                                    .height(208.dp)
+                                    .width(325.dp)
                             ){
                                 Image(
-                                    painter = painterResource(id = R.drawable.susanna),
-                                    contentDescription = " "
+                                    painter = if(it.imagem == null){painterResource(id = R.drawable.noimageavailable)}else{it.imagem !!},
+                                    contentDescription = " ",
+                                    modifier = Modifier
+                                        .height(104.dp)
+                                        .width(325.dp)
                                 )
                                 Column {
                                     Text(
-                                        text = "London, 2019"
+                                        text = "${it.destino} - ${it.dataChegada.year}",
+                                        color = Color(0xffcf06f0)
                                     )
                                     Text(
-                                        text = "London is the capital and largest city of  the United Kingdom, with a population of just under 9 million."
+                                        text = "${it.descricao}",
+                                        color = Color(0xffa09c9c)
                                     )
-                                    Text(text = "18 Feb - 21 Feb")
+                                    Text(text = encurtadorDeDatas(it.dataChegada, it.dataPartida),
+                                        color = Color(0xffcf06f0)
+                                    )
                                 }
                             }
                         }
